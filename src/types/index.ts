@@ -11,3 +11,5 @@ export interface ProductEntity {
 
 export type SelectionType = 'size' | 'color';
 export type ProductListParam = 'homepage' | 'products';
+export type QuantityAction = 'increase' | 'decrease';
+export type OptionShape = 'square' | 'circle';

@@ -8,7 +8,7 @@ export const Filter = () => {
   const pathname = usePathname();
 
   const handleFilter = (value: string) => {
-    const params = new URLSearchParams(searchParams);
+    const params = new URLSearchParams(searchParams?.toString());
     params.set('sort', value);
     router.push(`${pathname}?${params.toString()}`, { scroll: false });
   };

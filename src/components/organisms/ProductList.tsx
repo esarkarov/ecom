@@ -1,9 +1,9 @@
-import { ViewAllLink } from '@/src/components/atoms/ViewAllLink';
 import { Categories } from '@/src/components/molecules/Categories';
 import { Filter } from '@/src/components/molecules/Filter';
 import { ProductCard } from '@/src/components/molecules/ProductCard';
 import { PRODUCT_LIST } from '@/src/constants';
 import { ProductListParam } from '@/src/types';
+import Link from 'next/link';
 
 interface ProductListProps {
   category: string;
@@ -23,7 +23,11 @@ export const ProductList = ({ category, params }: ProductListProps) => {
           />
         ))}
       </div>
-      <ViewAllLink category={category} />
+      <Link
+        href={category ? `/products/?category=${category}` : '/products'}
+        className="flex justify-end mt-4 underline text-sm text-gray-500">
+        View all products
+      </Link>
     </div>
   );
 };
