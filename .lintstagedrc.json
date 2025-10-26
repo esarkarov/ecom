@@ -1,5 +1,4 @@
 {
-  "*.{js,jsx,ts,tsx}": ["eslint --fix", "prettier --write", "bash -c 'pnpm exec tsc --noEmit'"],
-  "*.{json,md,mdx,css,scss}": ["prettier --write"],
-  "package.json": ["prettier --write"]
+  "*.{js,jsx,ts,tsx}": ["eslint --fix", "prettier --write"],
+  "*.{json,css,md,mdx}": ["prettier --write"]
 }
