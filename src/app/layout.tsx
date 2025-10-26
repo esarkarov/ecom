@@ -1,9 +1,9 @@
+import { Footer } from '@/src/components/organisms/Footer';
+import { Navbar } from '@/src/components/organisms/Navbar';
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import { ReactNode } from 'react';
 import { ToastContainer } from 'react-toastify';
-import { Footer } from '../components/organisms/Footer';
-import { Navbar } from '../components/organisms/Navbar';
 import './globals.css';
 
 const geistSans = Geist({
