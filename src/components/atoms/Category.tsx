@@ -13,10 +13,10 @@ export const Category = ({ slug, name, icon }: CategoryProps) => {
   const searchParams = useSearchParams();
   const router = useRouter();
   const pathname = usePathname();
-  const selectedCategory = searchParams.get('category');
+  const selectedCategory = searchParams?.get('category');
 
   const handleChange = (value: string | null) => {
-    const params = new URLSearchParams(searchParams);
+    const params = new URLSearchParams(searchParams?.toString());
     params.set('category', value || 'all');
     router.push(`${pathname}?${params.toString()}`, { scroll: false });
   };

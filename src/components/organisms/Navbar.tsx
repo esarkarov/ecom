@@ -1,6 +1,5 @@
 import { BrandLogo } from '@/src/components/atoms/BrandLogo';
 import { ShoppingCartIcon } from '@/src/components/atoms/ShoppingCartIcon';
-import { SignInLink } from '@/src/components/atoms/SignInLink';
 import { SearchBar } from '@/src/components/molecules/SearchBar';
 import { Bell, Home } from 'lucide-react';
 import Link from 'next/link';
@@ -16,7 +15,11 @@ export const Navbar = () => {
         </Link>
         <Bell className="w-4 h-4 text-gray-600" />
         <ShoppingCartIcon />
-        <SignInLink />
+        <Link
+          href="/login"
+          className="text-amber-400 hover:text-white border border-amber-400 hover:bg-amber-400 focus:outline-none font-medium rounded-lg text-sm px-4 py-1.5 text-center">
+          Sign in
+        </Link>
       </div>
     </nav>
   );

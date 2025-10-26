@@ -1,28 +1,13 @@
-import { ProductList } from '@/src/components/organisms/ProductList';
-import Image from 'next/image';
+import HomePage from '@/src/pages/HomePage';
 
-interface HomepageProps {
+interface HomeProps {
   searchParams: Promise<{ category: string }>;
 }
 
-const Homepage = async ({ searchParams }: HomepageProps) => {
+const Home = async ({ searchParams }: HomeProps) => {
   const category = (await searchParams).category;
 
-  return (
-    <div>
-      <div className="relative aspect-[3/1] mb-12">
-        <Image
-          src="/featured.png"
-          alt="Featured Product"
-          fill
-        />
-      </div>
-      <ProductList
-        category={category}
-        params="homepage"
-      />
-    </div>
-  );
+  return <HomePage category={category} />;
 };
 
-export default Homepage;
+export default Home;

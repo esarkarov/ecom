@@ -1,9 +1,9 @@
 'use client';
 
-import { AddToCartButton } from '@/src/components/atoms/AddToCartButton';
-import { ColorOption } from '@/src/components/atoms/ColorOption';
-import { SizeSelect } from '@/src/components/atoms/SizeSelect';
+import { ColorOptions } from '@/src/components/molecules/ColorOptions';
+import { SizeSelect } from '@/src/components/molecules/SizeSelect';
 import { ProductEntity, SelectionType } from '@/src/types';
+import { ShoppingCart } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
@@ -14,13 +14,13 @@ interface ProductCardProps {
 
 export const ProductCard = ({ product }: ProductCardProps) => {
   const { sizes, colors, id, name, images, shortDescription, price } = product;
-  const [productEntities, setProductEntities] = useState({
+  const [selectedOptions, setSelectedOptions] = useState({
     size: sizes[0],
     color: colors[0],
   });
 
-  const handleProductEntity = ({ type, value }: { type: SelectionType; value: string }) => {
-    setProductEntities((prev) => ({
+  const handleOptionChange = ({ type, value }: { type: SelectionType; value: string }) => {
+    setSelectedOptions((prev) => ({
       ...prev,
       [type]: value,
     }));
@@ -32,7 +32,7 @@ export const ProductCard = ({ product }: ProductCardProps) => {
         <div className="relative aspect-[2/3]">
           <Image
             className="object-cover hover:scale-105 transition-all duration-300"
-            src={images[productEntities.color]}
+            src={images[selectedOptions.color]}
             alt={name}
             fill
           />
@@ -44,17 +44,22 @@ export const ProductCard = ({ product }: ProductCardProps) => {
         <div className="flex items-center gap-4 text-xs">
           <SizeSelect
             sizes={sizes}
-            onChange={handleProductEntity}
+            onChange={handleOptionChange}
           />
-          <ColorOption
+          <ColorOptions
             colors={colors}
-            onChange={handleProductEntity}
-            productColor={productEntities.color}
+            onChange={handleOptionChange}
+            selectedColor={selectedOptions.color}
+            shape="circle"
+            size={16}
           />
         </div>
         <div className="flex items-center justify-between">
           <p className="font-medium">${price.toFixed(2)}</p>
-          <AddToCartButton />
+          <button className="ring-1 ring-gray-200 shadow-lg rounded-md px-2 py-1 text-sm cursor-pointer hover:text-white hover:bg-gray-800 transition-all duration-300 flex items-center gap-2">
+            <ShoppingCart className="w-4 h-4" />
+            Add to Cart
+          </button>
         </div>
       </div>
     </div>
