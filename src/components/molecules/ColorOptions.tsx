@@ -20,7 +20,7 @@ export const ColorOptions = ({ colors, selectedColor, onChange, shape = 'square'
         {colors.map((color) => (
           <div
             key={color}
-            className={`cursor-pointer border-1 p-[2px] ${selectedColor === color ? 'border-gray-400' : 'border-gray-200'} ${shapeClass}`}
+            className={`cursor-pointer border p-2px ${selectedColor === color ? 'border-gray-400' : 'border-gray-200'} ${shapeClass}`}
             onClick={() => onChange({ type: 'color', value: color })}>
             <span
               className={`block ${shapeClass}`}

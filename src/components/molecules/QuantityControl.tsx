@@ -17,13 +17,13 @@ export const QuantityControl = () => {
       <span className="text-gray-500">Quantity</span>
       <div className="flex items-center gap-2">
         <button
-          className="cursor-pointer border-1 border-gray-300 p-1"
+          className="cursor-pointer border border-gray-300 p-1"
           onClick={() => handleQuantityUpdate('decrease')}>
           <Minus className="w-4 h-4" />
         </button>
         <span>{itemQuantity}</span>
         <button
-          className="cursor-pointer border-1 border-gray-300 p-1"
+          className="cursor-pointer border border-gray-300 p-1"
           onClick={() => handleQuantityUpdate('increase')}>
           <Plus className="w-4 h-4" />
         </button>

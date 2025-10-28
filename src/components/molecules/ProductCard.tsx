@@ -29,7 +29,7 @@ export const ProductCard = ({ product }: ProductCardProps) => {
   return (
     <div className="shadow-lg rounded-lg overflow-hidden">
       <Link href={`/products/${id}`}>
-        <div className="relative aspect-[2/3]">
+        <div className="relative aspect-2/3">
           <Image
             className="object-cover hover:scale-105 transition-all duration-300"
             src={images[selectedOptions.color]}
