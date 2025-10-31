@@ -1,5 +1,5 @@
 import { Footprints, Glasses, Briefcase, Shirt, ShoppingBasket, Hand, Venus } from 'lucide-react';
-import { ProductEntity } from '@/src/types';
+import { CartItemEntity, ProductEntity } from '@/src/types';
 
 export const CATEGORIES = [
   {
@@ -44,7 +44,21 @@ export const CATEGORIES = [
   },
 ];
 
-// TODO: get the real products data from api
+export const STEPS = [
+  {
+    id: 1,
+    title: 'Shopping Cart',
+  },
+  {
+    id: 2,
+    title: 'Shipping Address',
+  },
+  {
+    id: 3,
+    title: 'Payment Method',
+  },
+];
+
 export const PRODUCT_LIST: ProductEntity[] = [
   {
     id: 1,
@@ -148,7 +162,59 @@ export const PRODUCT_LIST: ProductEntity[] = [
   },
 ];
 
-// TODO: get the real product data from api
+export const CART_ITEMS: CartItemEntity[] = [
+  {
+    id: 1,
+    name: 'Adidas CoreFit T-Shirt',
+    shortDescription: 'Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit.',
+    description:
+      'Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit.',
+    price: 39.9,
+    sizes: ['s', 'm', 'l', 'xl', 'xxl'],
+    colors: ['gray', 'purple', 'green'],
+    images: {
+      gray: '/products/1g.png',
+      purple: '/products/1p.png',
+      green: '/products/1gr.png',
+    },
+    itemQuantity: 1,
+    selectedSize: 'm',
+    selectedColor: 'gray',
+  },
+  {
+    id: 2,
+    name: 'Puma Ultra Warm Zip',
+    shortDescription: 'Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit.',
+    description:
+      'Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit.',
+    price: 59.9,
+    sizes: ['s', 'm', 'l', 'xl'],
+    colors: ['gray', 'green'],
+    images: { gray: '/products/2g.png', green: '/products/2gr.png' },
+    itemQuantity: 1,
+    selectedSize: 'l',
+    selectedColor: 'gray',
+  },
+  {
+    id: 3,
+    name: 'Nike Air Essentials Pullover',
+    shortDescription: 'Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit.',
+    description:
+      'Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit.',
+    price: 69.9,
+    sizes: ['s', 'm', 'l'],
+    colors: ['green', 'blue', 'black'],
+    images: {
+      green: '/products/3gr.png',
+      blue: '/products/3b.png',
+      black: '/products/3bl.png',
+    },
+    itemQuantity: 1,
+    selectedSize: 'l',
+    selectedColor: 'black',
+  },
+];
+
 export const PRODUCT: ProductEntity = {
   id: 1,
   name: 'Adidas CoreFit T-Shirt',

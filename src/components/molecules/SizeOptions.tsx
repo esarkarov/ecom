@@ -13,9 +13,7 @@ export const SizeOptions = ({ sizes, onChange, selectedSize }: SizeOptionsProps)
       <div className="flex items-center gap-2">
         {sizes.map((size) => (
           <div
-            className={`cursor-pointer border-1 p-[2px] ${
-              selectedSize === size ? 'border-gray-600' : 'border-gray-300'
-            }`}
+            className={`cursor-pointer border p-2px ${selectedSize === size ? 'border-gray-600' : 'border-gray-300'}`}
             key={size}
             onClick={() => onChange({ type: 'size', value: size })}>
             <div

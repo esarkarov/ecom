@@ -11,7 +11,7 @@ interface ProductPageProps {
 const ProductPage = ({ selectedSize, selectedColor }: ProductPageProps) => {
   return (
     <div className="flex flex-col gap-4 lg:flex-row md:gap-12 mt-12">
-      <div className="w-full lg:w-5/12 relative aspect-[2/3]">
+      <div className="w-full lg:w-5/12 relative aspect-2/3">
         <Image
           src={PRODUCT.images[selectedColor]}
           alt={PRODUCT.name}
@@ -24,6 +24,7 @@ const ProductPage = ({ selectedSize, selectedColor }: ProductPageProps) => {
         <p className="text-gray-500">{PRODUCT.description}</p>
         <h2 className="text-2xl font-semibold">${PRODUCT.price.toFixed(2)}</h2>
         <ProductActions
+          product={PRODUCT}
           selectedSize={selectedSize}
           selectedColor={selectedColor}
         />

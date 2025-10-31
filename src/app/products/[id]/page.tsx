@@ -2,10 +2,8 @@ import { PRODUCT } from '@/src/constants';
 import ProductPage from '@/src/pages/ProductPage';
 
 export const generateMetadata = async () => {
-  // TODO: get the real product from api
-  // TEMPORARY
   return {
-    title: PRODUCT.name,
+    title: `Gocart | ${PRODUCT.name}`,
     describe: PRODUCT.description,
   };
 };

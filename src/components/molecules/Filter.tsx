@@ -7,7 +7,7 @@ export const Filter = () => {
   const router = useRouter();
   const pathname = usePathname();
 
-  const handleFilter = (value: string) => {
+  const handleQueryUpdate = (value: string) => {
     const params = new URLSearchParams(searchParams?.toString());
     params.set('sort', value);
     router.push(`${pathname}?${params.toString()}`, { scroll: false });
@@ -19,8 +19,8 @@ export const Filter = () => {
       <select
         name="sort"
         id="sort"
-        className="ring-1 ring-gray-200 shadow-md p-1 rounded-sm"
-        onChange={(e) => handleFilter(e.target.value)}>
+        className="ring-1 ring-gray-200 shadow-md focus:outline-none p-1 rounded-sm"
+        onChange={(e) => handleQueryUpdate(e.target.value)}>
         <option value="newest">Newest</option>
         <option value="oldest">Oldest</option>
         <option value="asc">Price: Low to High</option>

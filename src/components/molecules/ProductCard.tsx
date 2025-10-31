@@ -2,11 +2,13 @@
 
 import { ColorOptions } from '@/src/components/molecules/ColorOptions';
 import { SizeSelect } from '@/src/components/molecules/SizeSelect';
+import { useCartStore } from '@/src/stores/cartStore';
 import { ProductEntity, SelectionType } from '@/src/types';
 import { ShoppingCart } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
+import { toast } from 'react-toastify';
 
 interface ProductCardProps {
   product: ProductEntity;
@@ -18,6 +20,7 @@ export const ProductCard = ({ product }: ProductCardProps) => {
     size: sizes[0],
     color: colors[0],
   });
+  const { addToCart } = useCartStore();
 
   const handleOptionChange = ({ type, value }: { type: SelectionType; value: string }) => {
     setSelectedOptions((prev) => ({
@@ -26,10 +29,20 @@ export const ProductCard = ({ product }: ProductCardProps) => {
     }));
   };
 
+  const handleAddToCart = () => {
+    addToCart({
+      ...product,
+      itemQuantity: 1,
+      selectedSize: selectedOptions.size,
+      selectedColor: selectedOptions.color,
+    });
+    toast.success('Product added to cart');
+  };
+
   return (
     <div className="shadow-lg rounded-lg overflow-hidden">
       <Link href={`/products/${id}`}>
-        <div className="relative aspect-[2/3]">
+        <div className="relative aspect-2/3">
           <Image
             className="object-cover hover:scale-105 transition-all duration-300"
             src={images[selectedOptions.color]}
@@ -56,7 +69,9 @@ export const ProductCard = ({ product }: ProductCardProps) => {
         </div>
         <div className="flex items-center justify-between">
           <p className="font-medium">${price.toFixed(2)}</p>
-          <button className="ring-1 ring-gray-200 shadow-lg rounded-md px-2 py-1 text-sm cursor-pointer hover:text-white hover:bg-gray-800 transition-all duration-300 flex items-center gap-2">
+          <button
+            onClick={handleAddToCart}
+            className="ring-1 ring-gray-200 shadow-lg rounded-md px-2 py-1 text-sm cursor-pointer hover:text-white hover:bg-gray-800 transition-all duration-300 flex items-center gap-2">
             <ShoppingCart className="w-4 h-4" />
             Add to Cart
           </button>

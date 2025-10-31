@@ -5,7 +5,7 @@ interface HomeProps {
 }
 
 const Home = async ({ searchParams }: HomeProps) => {
-  const category = (await searchParams).category;
+  const { category } = await searchParams;
 
   return <HomePage category={category} />;
 };
