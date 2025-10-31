@@ -24,6 +24,7 @@ const ProductPage = ({ selectedSize, selectedColor }: ProductPageProps) => {
         <p className="text-gray-500">{PRODUCT.description}</p>
         <h2 className="text-2xl font-semibold">${PRODUCT.price.toFixed(2)}</h2>
         <ProductActions
+          product={PRODUCT}
           selectedSize={selectedSize}
           selectedColor={selectedColor}
         />

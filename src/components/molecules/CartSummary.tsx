@@ -1,4 +1,5 @@
 import { CART_ITEMS } from '@/src/constants';
+import { CheckoutStep } from '@/src/types';
 import { ArrowRight } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 
@@ -16,7 +17,7 @@ export const CartSummary = ({ activeStep }: CartSummaryProps) => {
         <div className="flex justify-between text-sm">
           <p className="text-gray-500">Subtotal</p>
           <p className="font-medium">
-            ${CART_ITEMS.reduce((acc, item) => acc + item.price * item.quantity, 0).toFixed(2)}
+            ${CART_ITEMS.reduce((acc, item) => acc + item.price * item.itemQuantity, 0).toFixed(2)}
           </p>
         </div>
         <div className="flex justify-between text-sm">
@@ -31,11 +32,11 @@ export const CartSummary = ({ activeStep }: CartSummaryProps) => {
         <div className="flex justify-between">
           <p className="text-gray-800 font-semibold">Total</p>
           <p className="font-medium">
-            ${CART_ITEMS.reduce((acc, item) => acc + item.price * item.quantity, 0).toFixed(2)}
+            ${CART_ITEMS.reduce((acc, item) => acc + item.price * item.itemQuantity, 0).toFixed(2)}
           </p>
         </div>
       </div>
-      {activeStep === 1 && (
+      {activeStep === CheckoutStep.Cart && (
         <button
           onClick={() => router.push('/cart?step=2', { scroll: false })}
           className="w-full bg-gray-800 hover:bg-gray-900 transition-all duration-300 text-white p-2 rounded-lg cursor-pointer flex items-center justify-center gap-2">

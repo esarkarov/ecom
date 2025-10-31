@@ -1,15 +1,15 @@
 import { QuantityAction } from '@/src/types';
 import { Minus, Plus } from 'lucide-react';
-import { useState } from 'react';
 
-export const QuantityControl = () => {
-  const [itemQuantity, setItemQuantity] = useState(1);
+interface QuantityControlProps {
+  itemQuantity: number;
+  onQuantityUpdate: (value: number) => void;
+}
 
+export const QuantityControl = ({ onQuantityUpdate, itemQuantity }: QuantityControlProps) => {
   const handleQuantityUpdate = (action: QuantityAction) => {
-    setItemQuantity((prev) => {
-      if (action === 'increase') return prev + 1;
-      return Math.max(1, prev - 1);
-    });
+    const newQuantity = action === 'increase' ? itemQuantity + 1 : Math.max(1, itemQuantity - 1);
+    onQuantityUpdate(newQuantity);
   };
 
   return (

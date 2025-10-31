@@ -5,8 +5,9 @@ import { CartSummary } from '@/src/components/molecules/CartSummary';
 import { StepItem } from '@/src/components/molecules/StepItem';
 import { PaymentForm } from '@/src/components/organisms/PaymentForm';
 import { ShippingForm } from '@/src/components/organisms/ShippingForm';
-import { CART_ITEMS, STEPS } from '@/src/constants';
-import { ShippingFormData } from '@/src/types';
+import { STEPS } from '@/src/constants';
+import { useCartStore } from '@/src/stores/cartStore';
+import { CheckoutStep, ShippingFormData } from '@/src/types';
 import { useState } from 'react';
 
 interface CartPageProps {
@@ -15,23 +16,27 @@ interface CartPageProps {
 
 const CartPage = ({ activeStep }: CartPageProps) => {
   const [shippingForm, setShippingForm] = useState<ShippingFormData>();
+  const { cart } = useCartStore();
 
   const renderStepContent = () => {
-    if (activeStep === 1) {
-      return CART_ITEMS.map((item) => (
-        <CartItem
-          key={item.id}
-          item={item}
-        />
-      ));
+    switch (activeStep) {
+      case CheckoutStep.Cart:
+        return cart.map((item) => (
+          <CartItem
+            key={item.id}
+            item={item}
+          />
+        ));
+
+      case CheckoutStep.Shipping:
+        return <ShippingForm setShippingForm={setShippingForm} />;
+
+      case CheckoutStep.Payment:
+        return shippingForm ? <PaymentForm /> : '';
+
+      default:
+        return <p className="text-sm text-gray-500">Please fill in the shipping form to continue.</p>;
     }
-    if (activeStep === 2) {
-      return <ShippingForm setShippingForm={setShippingForm} />;
-    }
-    if (activeStep === 3 && shippingForm) {
-      return <PaymentForm />;
-    }
-    return <p className="text-sm text-gray-500">Please fill in the shipping form to continue.</p>;
   };
 
   return (

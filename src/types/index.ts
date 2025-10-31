@@ -13,9 +13,26 @@ export interface ProductEntity {
 }
 
 export interface CartItemEntity extends ProductEntity {
-  quantity: number;
+  itemQuantity: number;
   selectedSize: string;
   selectedColor: string;
+}
+
+export interface CartState {
+  cart: CartItemEntity[];
+  hasHydrated: boolean;
+}
+
+export interface CartActions {
+  addToCart: (product: CartItemEntity) => void;
+  removeFromCart: (product: CartItemEntity) => void;
+  clearCart: () => void;
+}
+
+export enum CheckoutStep {
+  Cart = 1,
+  Shipping,
+  Payment,
 }
 
 export type SelectionType = 'size' | 'color';
