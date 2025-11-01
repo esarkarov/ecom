@@ -11,7 +11,7 @@ export const BrandLogo = ({ color = 'text-white' }: BrandTextProps) => {
       href="/"
       className="flex items-center">
       <Image
-        src="/logo.png"
+        src="/logo.svg"
         alt="Gocart"
         width={36}
         height={36}
